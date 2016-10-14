@@ -24,7 +24,8 @@ package cl.netgamer.showskin;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.logging.Level;
 
 import org.bukkit.configuration.file.FileConfiguration;
@@ -41,8 +42,6 @@ public class ConfigAccesor {
 	public ConfigAccesor(JavaPlugin plugin, String fileName) {
 		if (plugin == null)
 			throw new IllegalArgumentException("plugin cannot be null");
-		if (!plugin.isInitialized())
-			throw new IllegalArgumentException("plugin must be initialized");
 		this.plugin = plugin;
 		this.fileName = fileName;
 		File dataFolder = plugin.getDataFolder();
@@ -55,7 +54,7 @@ public class ConfigAccesor {
 		fileConfiguration = YamlConfiguration.loadConfiguration(configFile);
 
 		// Look for defaults in the jar
-		InputStream defConfigStream = plugin.getResource(fileName);
+		Reader defConfigStream = new InputStreamReader(plugin.getResource(fileName));
 		if (defConfigStream != null) {
 			YamlConfiguration defConfig = YamlConfiguration
 					.loadConfiguration(defConfigStream);

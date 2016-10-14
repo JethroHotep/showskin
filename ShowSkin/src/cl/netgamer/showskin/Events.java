@@ -64,15 +64,18 @@ public class Events implements Listener
 		case "CONTAINER":
 		case "QUICKBAR":
 			// player shift clicked an armor item (except pumpkin or mob head)
-			if (e.getClick().isShiftClick())
+			if (e.getClick().isShiftClick()) {
 				// check item wear level
-				if (ss.func.getItemWearability(e.getCurrentItem()) == 1)
+				if (ss.func.getItemWearability(e.getCurrentItem()) > 0) { 
 					break;
+				}
+			}
 			return;
 		case "ARMOR":
 			// check cursor item wear level
-			if (ss.func.getItemWearability(e.getCursor()) > 0)
+			if (ss.func.getItemWearability(e.getCursor()) > 0) {
 				break;
+			}
 		default:
 			// you cant craft armor in player crafting inventory, doesnt fit
 			return;

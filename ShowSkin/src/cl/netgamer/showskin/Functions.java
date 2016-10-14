@@ -28,8 +28,8 @@ public class Functions
 	private Map<String, BukkitTask> tasks = new HashMap<String, BukkitTask>();
 	private Map<String, int[]> armorStatus = new HashMap<String, int[]>();
 	private Map<String, double[]> epfs = new HashMap<String, double[]>();
-	// §B=cyan, §E=yellow, §D=magenta
-	String[] colors = new String[]{"§D", "§E", "§B"};
+	// ï¿½B=cyan, ï¿½E=yellow, ï¿½D=magenta
+	String[] colors = new String[]{"ï¿½D", "ï¿½E", "ï¿½B"};
 	String[] pieceNames;
 	String[] pieceTitles;
 	String[] statusLines;
@@ -209,6 +209,7 @@ public class Functions
 		case "IRON_CHESTPLATE":
 		case "DIAMOND_CHESTPLATE":
 		case "GOLD_CHESTPLATE":
+		case "ELYTRA":
 			return 2;
 		case "LEATHER_HELMET":
 		case "CHAINMAIL_HELMET":
@@ -233,7 +234,8 @@ public class Functions
 		case "PUMPKIN":
 		case "SKULL_ITEM":
 			++level;
-		// just armor
+		// just armor and elytra
+		case "ELYTRA":
 		case "LEATHER_BOOTS":
 		case "CHAINMAIL_BOOTS":
 		case "IRON_BOOTS":
@@ -382,7 +384,7 @@ public class Functions
 
 		// display unequip message?
 		if ((boolean)act.get("equipMsg"))
-			player.sendMessage("§B"+ss.getConfig().getString("lang.saveArmor"));
+			player.sendMessage("ï¿½B"+ss.getConfig().getString("lang.saveArmor"));
 		
 		// display status messages
 		if ((boolean)act.get("statusMsg"))
@@ -518,7 +520,7 @@ public class Functions
 				
 				// display equip message if worths
 				if ((boolean)act.get("equipMsg"))
-					player.sendMessage("§B"+ss.getConfig().getString("lang.equipArmor"));
+					player.sendMessage("ï¿½B"+ss.getConfig().getString("lang.equipArmor"));
 			}
 		}
 			
